@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'gerencia_fila.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=default_dburl), }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
