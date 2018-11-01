@@ -1,1 +1,1 @@
-web: gunicorn pnerfid.wsgi --log-file -
+web: gunicorn gerencia_fila.wsgi --log-file -
