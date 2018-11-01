@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block title%} Home {%endblock%}
+
+{% block main %}
+{%load static%}
+{% if user.is_authenticated %}
+  <center>
+    <img src="{%static 'logos/filaimg.jpg'%}"></center>
+{%else%}
+<h2><center>Bem vindo ao sistema de fila clique abaixo para se autenticar</center></h2>
+    <a href="{%url 'login'%}" class="btn btn-info">Login</a>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title%} Administração {%endblock%}
+
+{% block main %}
+
+<div class="row">
+    <div class="col">
+
+
+    </div>
+    <div class="col-6">
+            <h2>Clientes cadastrados</h2>
+            <ul class="list-group">
+                {% for person in persons %}
+                    <li class="list-group-item">
+                        <a href="{% url 'person_update' person.id%}">{{ person.first_name }}</a>
+                        <a href="{% url 'person_delete' person.id%}" class="trash-item">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+            <br>
+
+            <a href="{% url 'person_new'%}" class="btn btn-primary"> Novo Cliente</a>
+            <br>
+    </div>
+
+    <div class="col">
+    </div>
+
+</div>
+
+
+{% endblock %}

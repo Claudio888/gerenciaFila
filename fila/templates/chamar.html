@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block title%} Administração {%endblock%}
+
+{% block main %}
+
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script>
+
+function increaseFontSize(id, increaseFactor){
+     txt = document.getElementById(id);
+     style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+     currentSize = parseFloat(style);
+     txt.style.fontSize = (currentSize + increaseFactor) + 'px';
+}
+
+function decreaseFontSize(id, decreaseFactor){
+     txt = document.getElementById(id);
+     style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+     currentSize = parseFloat(style);
+     txt.style.fontSize = (currentSize - decreaseFactor) + 'px';
+}
+</script>
+
+    <center><h2>Próximo cliente</h2></center>
+    <form  method="POST" enctype="multipart/form-data" on>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" onclick="document.getElementById('btn1').click();">Chamar</button>
+    </form>
+<div class="jumbotron">
+        {% for person in persons %}
+
+    <h2><p id="b">O próximo cliente a ser atendido é:<br><br>
+             Nome: {{ person.first_name }} {{ person.last_name}}<br>
+             Senha: {{ person.rfid }}<br>
+             Deficiência: {{ person.deficiency_type }}<br>
+             </p></h2>
+            <!--<img src="{{person.photo.url}}"!-->
+    <input id="btn1" onclick='responsiveVoice.speak("Cliente: {{person.first_name}} {{person.last_name}}, por favor, dirija-se ao caixa","Brazilian Portuguese Female");' type='button' value='🔊 Play' />
+    <input type="button" value="-" onclick="decreaseFontSize('b', 20)">
+    <input type="button" value="+" onclick="increaseFontSize('b', 20)">
+    {% endfor %}
+</div>
+<h2>Existem {{ tamanhofila }} pessoas na fila!</h2>
+
+{% endblock %}
