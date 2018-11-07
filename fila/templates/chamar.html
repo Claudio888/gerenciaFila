@@ -37,7 +37,9 @@ function decreaseFontSize(id, decreaseFactor){
              Senha: {{ person.rfid }}<br>
              Deficiência: {{ person.deficiency_type }}<br>
              </p></h2>
-            <!--<img src="{{person.photo.url}}"!-->
+            {%if person.photo %}
+            <img src="{{person.photo.url}}" alt="-">
+            {% endif%}
     <input id="btn1" onclick='responsiveVoice.speak("Cliente: {{person.first_name}} {{person.last_name}}, por favor, dirija-se ao caixa","Brazilian Portuguese Female");' type='button' value='🔊 Play' />
     <input type="button" value="-" onclick="decreaseFontSize('b', 20)">
     <input type="button" value="+" onclick="increaseFontSize('b', 20)">
