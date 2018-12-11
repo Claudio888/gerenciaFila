@@ -5,16 +5,24 @@
 {% block main %}
 
 <div class="row">
-    <div class="col">
+        <div class="col2">
+        <form class="form-inline">
+          <div class="form-group">
+            <label class="sr-only">Email</label>
+          </div>
+          <div class="form-group mx-sm-3">
+            <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Cliente">
+          </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        </div>
 
-
-    </div>
     <div class="col-6">
             <h2>Clientes cadastrados</h2>
             <ul class="list-group">
                 {% for person in persons %}
                     <li class="list-group-item">
-                        <a href="{% url 'person_update' person.id%}">{{ person.first_name }}</a>
+                        <a href="{% url 'person_update' person.id%}">{{ person.first_name }} {{person.last_name}}</a>
                         <a href="{% url 'person_delete' person.id%}" class="trash-item">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
